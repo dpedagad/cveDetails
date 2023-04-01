@@ -6,7 +6,7 @@ ext {
     javaMainClass = "com.cvedetails.CVE"
 }
 
-group 'org.dassana'
+group 'com.cvedetails'
 version '1.0-SNAPSHOT'
 
 repositories {
