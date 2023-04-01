@@ -1,0 +1,36 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'java'
+}
+ext {
+    javaMainClass = "com.cvedetails.CVE"
+}
+
+group 'org.dassana'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.seleniumhq.selenium:selenium-java:4.8.1'
+    implementation group: 'org.seleniumhq.selenium', name: 'htmlunit-driver', version: '4.8.0'
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+}
+
+
+shadowJar {
+    manifest {
+        attributes 'Main-Class': 'com.cvedetails.CVE'
+    }
+}
+
+
+task runWithJavaExec(type: JavaExec) {
+    group = "Execution"
+    description = "Run the main class with JavaExecTask"
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = javaMainClass
+}
